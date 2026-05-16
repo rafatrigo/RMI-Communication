@@ -23,7 +23,7 @@ def main():
     climate_control = Pyro.Proxy("PYRONAME:temperature-sector")
     lighting = Pyro.Proxy("PYRONAME:uv-lighting-sector")
 
-    #report = Pyro.Proxy("PYRONAME:greenhouse.report")
+    report = Pyro.Proxy("PYRONAME:report-service")
 
     while True:
         option = display_menu()
@@ -62,15 +62,20 @@ def main():
 
         elif option == '4':
             try:
-                #data = report.get_daily_report()
+                data = report.daily_report()
 
                 print("\n" + "=" * 30)
                 print("DAILY REPORT")
                 print("=" * 30)
 
-                #print(f"Water Level:     {data.get('water', 'N/A')}%")
-                #print(f"Temperature:    {data.get('temperature', 'N/A')}°C")
-                #print(f"Current Spectrum: {data.get('light', 'N/A')}")
+                print(f"Water Level:     {data.get('water', 'N/A')}%")
+                print(f"Irrigating:     {data.get('irrigating', 'N/A')}")
+
+                print(f"Temperature:    {data.get('temperature', 'N/A')}°C")
+                print(f"Exhauster:    {data.get('exhauster', 'N/A')}")
+
+                print(f"Current Spectrum: {data.get('light_spectrum', 'N/A')}")
+                print(f"Current light intensity: {data.get('light_intensity', 'N/A')}")
 
                 print("=" * 30)
 
