@@ -7,7 +7,7 @@ import random
 class Temperature:
     def __init__(self):
         self.temperature = random.randint(18, 35)
-        self.exhauster_is_open = False
+        self._exhauster_is_open = False
         
         print(f"System started. Temperature at {self.temperature}°C")
 
@@ -21,12 +21,22 @@ class Temperature:
     def open_exhauster(self):
         print("[LOG] Exhauster opening requested.")
 
-        if self.exhauster_is_open:
+        if self._exhauster_is_open:
             return "Exhauster already open."
 
-        self.exhauster_is_open = True
+        self._exhauster_is_open = True
 
         return "Exhauster was opened."
+
+    def verify_temperature(self):
+        print("[LOG] Checking temperature.")
+
+        return self.temperature
+
+    def exhauster_is_open(self):
+        print("[LOG] Checking if the exhauster is open.")
+
+        return self._exhauster_is_open
 
 def main():
     temperature = Temperature()
