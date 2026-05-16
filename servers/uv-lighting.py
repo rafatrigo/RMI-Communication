@@ -40,6 +40,16 @@ class UVLighting():
         else:
             return f"Invalid spectrum. The valid values are {valid_spectrum}"
 
+    def verify_light_intensity(self):
+        print("[LOG] Checking light intensity")
+
+        return self.light_intensity
+
+    def verify_light_spectrum(self):
+        print("[LOG] Checking light spectrum.")
+
+        return self.light_spectrum
+
 def main():
     uv_lighting = UVLighting()
 
