@@ -26,6 +26,11 @@ class Hydroponics():
         self.irrigating = True
         return "Irrigation activated."
 
+    def verify_irrigation(self):
+        print("[LOG] Checking irrigation.")
+
+        return self.irrigating
+
 def main():
     hydroponics = Hydroponics()
 
